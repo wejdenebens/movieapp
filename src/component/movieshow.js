@@ -25,25 +25,36 @@ import React,{useState} from 'react';
             setInputData('')
             }}>+</button>
 
-        <Modal.Dialog>
-        <Modal.Header closeButton>
-            <Modal.Title>Movie information</Modal.Title>
-        </Modal.Header>
+import React,{useState} from 'react';
 
-        <Modal.Body>
-            <p>Name of the movie</p> <input type="text" name="movie"></input>
-            <p>Rating of the movie</p> <input type="text" name="rating"></input>
-        </Modal.Body>
+      const Movieshow = () => {
 
-        <Modal.Footer>
-            <Button variant="secondary">Close</Button>
-            
-        </Modal.Footer>
-        </Modal.Dialog>
+      const [movie,setmovie] = useState([{id:1,movie:'titanic',rating:'5'}])
+      const [inputData,setInputData] = useState('')
+      const [ratingData,setratingData] = useState('')
+
+      return( 
+        <>
+        <ul>
+            {
+                movie.map(item =>
+                <> 
+                    <li>{item.movie}</li>
+                    <li>{item.rating}</li>
+                     
+                 </>)
+                
+            }
+        </ul>
+        
+         <input type='text' onChange={(e)=>{setInputData(e.target.value)}} value={inputData}></input>  
+         <button onClick={()=>{ setmovie([...movie,{id:movie.length,movie:inputData,rating:ratingData}])
+            setInputData('')
+            }}>+</button>
              
         </>
              )
            
  }
 
-export default movieshow;
+export default Movieshow;
